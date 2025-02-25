@@ -27,14 +27,7 @@ export class PropertyController {
 
   @Post()
   create(
-    @Body(
-      new ValidationPipe({
-        whitelist: true,
-        forbidNonWhitelisted: true,
-        groups: ['create'],
-        always: true,
-      }),
-    )
+    @Body()
     body: CreatePropertyDto,
   ): string {
     return JSON.stringify(body);
@@ -48,14 +41,7 @@ export class PropertyController {
   @Patch(':id')
   update(
     @Param('id') id,
-    @Body(
-      new ValidationPipe({
-        whitelist: true,
-        forbidNonWhitelisted: true,
-        groups: ['update'],
-        always: true,
-      }),
-    )
+    @Body()
     body: CreatePropertyDto,
   ): string {
     return `This action updates a property of id: ${id} with data: ${JSON.stringify(body)}`;
