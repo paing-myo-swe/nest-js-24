@@ -25,7 +25,7 @@ Content-Type: application/json
 }
 
 ### Get Property Owners
-GET http://localhost:3000/properties/1/owners
+GET http://localhost:3000/properties/1/owners?sort=true
 
 ### Delete Property By ID
 DELETE http://localhost:3000/properties/1

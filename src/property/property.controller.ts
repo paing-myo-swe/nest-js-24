@@ -4,8 +4,11 @@ import {
   Delete,
   Get,
   Param,
+  ParseBoolPipe,
+  ParseIntPipe,
   Patch,
   Post,
+  Query,
 } from '@nestjs/common';
 
 @Controller('properties')
@@ -36,7 +39,11 @@ export class PropertyController {
   }
 
   @Get(':id/owners')
-  findOwner(@Param('id') id): string {
+  findOwner(
+    @Param('id', ParseIntPipe) id,
+    @Query('sort', ParseBoolPipe) sort,
+  ): string {
+    console.log(typeof sort);
     return `This action returns the owners of the property of id: ${id}`;
   }
 
