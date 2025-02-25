@@ -9,7 +9,10 @@ import {
   Patch,
   Post,
   Query,
+  UsePipes,
+  ValidationPipe,
 } from '@nestjs/common';
+import { CreatePropertyDto } from './dto/create-property.dto';
 
 @Controller('properties')
 export class PropertyController {
@@ -24,8 +27,11 @@ export class PropertyController {
   }
 
   @Post()
-  create(@Body() inputedPropertyData): string {
-    return JSON.stringify(inputedPropertyData);
+  create(
+    @Body(new ValidationPipe({ whitelist: true, forbidNonWhitelisted: true }))
+    body: CreatePropertyDto,
+  ): string {
+    return JSON.stringify(body);
   }
 
   @Get(':id')

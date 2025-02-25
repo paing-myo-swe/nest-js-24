@@ -9,8 +9,9 @@ POST http://localhost:3000/properties
 Content-Type: application/json
 
 {
-    "name": "New Property",
-    "type": "Car"
+    "name": "New",
+    "description": "New Property Description",
+    "area": 1000
 }
 
 ### Get Property By ID
