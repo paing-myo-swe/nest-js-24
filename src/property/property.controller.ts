@@ -12,6 +12,7 @@ import {
   ValidationPipe,
 } from '@nestjs/common';
 import { CreatePropertyDto } from './dto/create-property.dto';
+import { IdParamDto } from './dto/id-param.dto';
 
 @Controller('properties')
 export class PropertyController {
@@ -34,13 +35,13 @@ export class PropertyController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id): string {
-    return `This action returns a property of id: ${id}`;
+  findOne(@Param() param: IdParamDto): string {
+    return `This action returns a property of id: ${param.id}`;
   }
 
   @Patch(':id')
   update(
-    @Param('id') id,
+    @Param() { id }: IdParamDto,
     @Body()
     body: CreatePropertyDto,
   ): string {
@@ -49,7 +50,7 @@ export class PropertyController {
 
   @Get(':id/owners')
   findOwner(
-    @Param('id', ParseIntPipe) id,
+    @Param() { id }: IdParamDto,
     @Query('sort', ParseBoolPipe) sort,
   ): string {
     console.log(typeof sort);
@@ -57,7 +58,7 @@ export class PropertyController {
   }
 
   @Delete(':id')
-  remove(@Param('id') id): string {
+  remove(@Param() { id }: IdParamDto): string {
     return `This action removes a property of id: ${id}`;
   }
 }
