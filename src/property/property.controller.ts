@@ -13,6 +13,7 @@ import {
 } from '@nestjs/common';
 import { CreatePropertyDto } from './dto/create-property.dto';
 import { IdParamDto } from './dto/id-param.dto';
+import { ParseIdPipe } from './pipes/parse-id-pipe';
 
 @Controller('properties')
 export class PropertyController {
@@ -58,7 +59,7 @@ export class PropertyController {
   }
 
   @Delete(':id')
-  remove(@Param() { id }: IdParamDto): string {
+  remove(@Param('id', ParseIdPipe) id): string {
     return `This action removes a property of id: ${id}`;
   }
 }
