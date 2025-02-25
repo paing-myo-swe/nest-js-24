@@ -1,0 +1,31 @@
+### Get Properties
+GET http://localhost:3000/properties
+
+### Get Featured Properties
+GET http://localhost:3000/properties/featured
+
+### Create New Property
+POST http://localhost:3000/properties
+Content-Type: application/json
+
+{
+    "name": "New Property",
+    "type": "Car"
+}
+
+### Get Property By ID
+GET http://localhost:3000/properties/1
+
+### Update Property By ID
+PATCH  http://localhost:3000/properties/1
+Content-Type: application/json
+
+{
+    "name": "Updated Property"
+}
+
+### Get Property Owners
+GET http://localhost:3000/properties/1/owners
+
+### Delete Property By ID
+DELETE http://localhost:3000/properties/1
