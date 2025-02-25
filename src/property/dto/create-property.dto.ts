@@ -1,6 +1,6 @@
 import {
+  IsInt,
   IsNotEmpty,
-  IsNumber,
   IsPositive,
   IsString,
   Length,
@@ -14,9 +14,17 @@ export class CreatePropertyDto {
 
   @IsString()
   @IsNotEmpty()
+  @Length(10, 50, {
+    message: 'The description must be between 10 and 50 characters',
+    groups: ['create'],
+  })
+  @Length(10, 100, {
+    message: 'The description must be between 10 and 100 characters',
+    groups: ['update'],
+  })
   description: string;
 
-  @IsNumber()
+  @IsInt()
   @IsNotEmpty()
   @IsPositive()
   area: number;

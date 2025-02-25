@@ -9,7 +9,6 @@ import {
   Patch,
   Post,
   Query,
-  UsePipes,
   ValidationPipe,
 } from '@nestjs/common';
 import { CreatePropertyDto } from './dto/create-property.dto';
@@ -28,7 +27,14 @@ export class PropertyController {
 
   @Post()
   create(
-    @Body(new ValidationPipe({ whitelist: true, forbidNonWhitelisted: true }))
+    @Body(
+      new ValidationPipe({
+        whitelist: true,
+        forbidNonWhitelisted: true,
+        groups: ['create'],
+        always: true,
+      }),
+    )
     body: CreatePropertyDto,
   ): string {
     return JSON.stringify(body);
@@ -40,8 +46,19 @@ export class PropertyController {
   }
 
   @Patch(':id')
-  update(@Param('id') id, @Body() inputedPropertyData): string {
-    return `This action updates a property of id: ${id} with data: ${JSON.stringify(inputedPropertyData)}`;
+  update(
+    @Param('id') id,
+    @Body(
+      new ValidationPipe({
+        whitelist: true,
+        forbidNonWhitelisted: true,
+        groups: ['update'],
+        always: true,
+      }),
+    )
+    body: CreatePropertyDto,
+  ): string {
+    return `This action updates a property of id: ${id} with data: ${JSON.stringify(body)}`;
   }
 
   @Get(':id/owners')

@@ -9,7 +9,7 @@ POST http://localhost:3000/properties
 Content-Type: application/json
 
 {
-    "name": "New",
+    "name": "New Property",
     "description": "New Property Description",
     "area": 1000
 }
@@ -22,7 +22,9 @@ PATCH  http://localhost:3000/properties/1
 Content-Type: application/json
 
 {
-    "name": "Updated Property"
+    "name": "Updated Property",
+    "description": "Updated Property Description",
+    "area": 2000
 }
 
 ### Get Property Owners
