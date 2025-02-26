@@ -5,15 +5,19 @@ import {
   Get,
   Param,
   ParseBoolPipe,
-  ParseIntPipe,
   Patch,
   Post,
   Query,
-  ValidationPipe,
+  UsePipes,
 } from '@nestjs/common';
-import { CreatePropertyDto } from './dto/create-property.dto';
-import { IdParamDto } from './dto/id-param.dto';
-import { ParseIdPipe } from './pipes/parse-id-pipe';
+import { CreatePropertyDto } from './dto/createProperty.dto';
+import { IdParamDto } from './dto/idParam.dto';
+import { ParseIdPipe } from './pipes/parseIdPipe';
+import { ZodValidationPipe } from './pipes/zodValidationPipe';
+import {
+  createPropertySchema,
+  CreatePropertyZodDto,
+} from './dto/createPropertyZod.dto';
 
 @Controller('properties')
 export class PropertyController {
@@ -28,9 +32,10 @@ export class PropertyController {
   }
 
   @Post()
+  @UsePipes(new ZodValidationPipe(createPropertySchema))
   create(
     @Body()
-    body: CreatePropertyDto,
+    body: CreatePropertyZodDto,
   ): string {
     return JSON.stringify(body);
   }
