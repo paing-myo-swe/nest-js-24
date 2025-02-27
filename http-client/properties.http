@@ -20,6 +20,7 @@ GET http://localhost:3000/properties/1
 ### Update Property By ID
 PATCH  http://localhost:3000/properties/1
 Content-Type: application/json
+access-token: 123456
 
 {
     "name": "Updated Property",

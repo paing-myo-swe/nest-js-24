@@ -3,12 +3,14 @@ import {
   Controller,
   Delete,
   Get,
+  Headers,
   Param,
   ParseBoolPipe,
   Patch,
   Post,
   Query,
   UsePipes,
+  ValidationPipe,
 } from '@nestjs/common';
 import { CreatePropertyDto } from './dto/createProperty.dto';
 import { IdParamDto } from './dto/idParam.dto';
@@ -18,6 +20,8 @@ import {
   createPropertySchema,
   CreatePropertyZodDto,
 } from './dto/createPropertyZod.dto';
+import { HeaderPropertyDto } from './dto/headerProperty.dto';
+import { RequestHeader } from './pipes/requestHeader';
 
 @Controller('properties')
 export class PropertyController {
@@ -50,7 +54,15 @@ export class PropertyController {
     @Param() { id }: IdParamDto,
     @Body()
     body: CreatePropertyDto,
+    @RequestHeader(
+      new ValidationPipe({
+        whitelist: true,
+        validateCustomDecorators: true,
+      }),
+    )
+    header: HeaderPropertyDto,
   ): string {
+    console.log(header.accessToken);
     return `This action updates a property of id: ${id} with data: ${JSON.stringify(body)}`;
   }
 
