@@ -22,17 +22,19 @@ import {
 } from './dto/createPropertyZod.dto';
 import { HeaderPropertyDto } from './dto/headerProperty.dto';
 import { RequestHeader } from './pipes/requestHeader';
+import { PropertyService } from './property.service';
 
 @Controller('properties')
 export class PropertyController {
+  constructor(private readonly propertyService: PropertyService) {}
   @Get()
-  findAll(): string {
-    return 'This action returns all properties';
+  findAll() {
+    return this.propertyService.findAll();
   }
 
   @Get('featured')
-  findFeatured(): string {
-    return 'This action returns all featured properties';
+  findFeatured() {
+    return this.propertyService.findFeatured();
   }
 
   @Post()
@@ -40,13 +42,13 @@ export class PropertyController {
   create(
     @Body()
     body: CreatePropertyZodDto,
-  ): string {
-    return JSON.stringify(body);
+  ) {
+    return this.propertyService.create(body);
   }
 
   @Get(':id')
-  findOne(@Param() param: IdParamDto): string {
-    return `This action returns a property of id: ${param.id}`;
+  findOne(@Param() param: IdParamDto) {
+    return this.propertyService.findOne(param);
   }
 
   @Patch(':id')
@@ -61,22 +63,19 @@ export class PropertyController {
       }),
     )
     header: HeaderPropertyDto,
-  ): string {
+  ) {
     console.log(header.accessToken);
-    return `This action updates a property of id: ${id} with data: ${JSON.stringify(body)}`;
+    return this.propertyService.update(id, body, header);
   }
 
   @Get(':id/owners')
-  findOwner(
-    @Param() { id }: IdParamDto,
-    @Query('sort', ParseBoolPipe) sort,
-  ): string {
+  findOwner(@Param() { id }: IdParamDto, @Query('sort', ParseBoolPipe) sort) {
     console.log(typeof sort);
-    return `This action returns the owners of the property of id: ${id}`;
+    return this.propertyService.findOwner(id, sort);
   }
 
   @Delete(':id')
-  remove(@Param('id', ParseIdPipe) id): string {
-    return `This action removes a property of id: ${id}`;
+  remove(@Param('id', ParseIdPipe) id) {
+    return this.propertyService.remove(id);
   }
 }
