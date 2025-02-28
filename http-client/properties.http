@@ -1,9 +1,6 @@
 ### Get Properties
 GET http://localhost:3000/properties
 
-### Get Featured Properties
-GET http://localhost:3000/properties/featured
-
 ### Create New Property
 POST http://localhost:3000/properties
 Content-Type: application/json
@@ -11,7 +8,7 @@ Content-Type: application/json
 {
     "name": "New Property",
     "description": "New Property Description",
-    "area": 1000
+    "price": 1000
 }
 
 ### Get Property By ID
@@ -25,11 +22,8 @@ access-token: 123456
 {
     "name": "Updated Property",
     "description": "Updated Property Description",
-    "area": 2000
+    "price": 3000
 }
-
-### Get Property Owners
-GET http://localhost:3000/properties/1/owners?sort=true
 
 ### Delete Property By ID
 DELETE http://localhost:3000/properties/1

@@ -23,6 +23,7 @@ import {
 import { HeaderPropertyDto } from './dto/headerProperty.dto';
 import { RequestHeader } from './pipes/requestHeader';
 import { PropertyService } from './property.service';
+import { UpdatePropertyDto } from './dto/updateProperty.dto';
 
 @Controller('properties')
 export class PropertyController {
@@ -30,11 +31,6 @@ export class PropertyController {
   @Get()
   findAll() {
     return this.propertyService.findAll();
-  }
-
-  @Get('featured')
-  findFeatured() {
-    return this.propertyService.findFeatured();
   }
 
   @Post()
@@ -55,7 +51,7 @@ export class PropertyController {
   update(
     @Param() { id }: IdParamDto,
     @Body()
-    body: CreatePropertyDto,
+    body: UpdatePropertyDto,
     @RequestHeader(
       new ValidationPipe({
         whitelist: true,
@@ -66,12 +62,6 @@ export class PropertyController {
   ) {
     console.log(header.accessToken);
     return this.propertyService.update(id, body, header);
-  }
-
-  @Get(':id/owners')
-  findOwner(@Param() { id }: IdParamDto, @Query('sort', ParseBoolPipe) sort) {
-    console.log(typeof sort);
-    return this.propertyService.findOwner(id, sort);
   }
 
   @Delete(':id')
