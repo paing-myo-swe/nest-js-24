@@ -34,6 +34,5 @@ export class PropertyFeature {
   hasBalcony: boolean;
 
   @OneToOne(() => Property, (property) => property.propertyFeature)
-  @JoinColumn()
   property: Property;
 }
