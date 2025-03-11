@@ -1,5 +1,5 @@
 ### Get Properties
-GET http://localhost:3000/properties
+GET http://localhost:3000/properties?limit=10
 
 ### Create New Property
 POST http://localhost:3000/properties

@@ -5,6 +5,8 @@ import { Repository } from 'typeorm';
 import { CreatePropertyDto } from './dto/createProperty.dto';
 import { IdParamDto } from './dto/idParam.dto';
 import { UpdatePropertyDto } from './dto/updateProperty.dto';
+import { PaginationDto } from './dto/pagination.dto';
+import { DEFAULT_PAGINATION_LIMIT } from 'src/utils/constants';
 
 @Injectable()
 export class PropertyService {
@@ -12,8 +14,11 @@ export class PropertyService {
     @InjectRepository(Property) private propertyRepo: Repository<Property>,
   ) {}
 
-  async findAll() {
-    return await this.propertyRepo.find();
+  async findAll(paginationDto: PaginationDto) {
+    return await this.propertyRepo.find({
+      skip: paginationDto.skip,
+      take: paginationDto.limit ?? DEFAULT_PAGINATION_LIMIT,
+    });
   }
 
   async create(data: CreatePropertyDto) {
