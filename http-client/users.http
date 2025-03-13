@@ -1,0 +1,14 @@
+### Get Users
+GET http://localhost:3000/users?limit=10
+
+### Create New User
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+    "firstName": "New",
+    "lastName": "User",
+    "email": "newuser1@gmail.com",
+    "avatarUrl": "https://www.example.com/avatar.jpg",
+    "password": "password"
+}
