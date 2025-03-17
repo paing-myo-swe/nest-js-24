@@ -12,3 +12,8 @@ Content-Type: application/json
     "avatarUrl": "https://www.example.com/avatar.jpg",
     "password": "password"
 }
+
+### Get Profile
+GET http://localhost:3000/users/profile
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjExLCJpYXQiOjE3NDIyMjc3MDUsImV4cCI6MTc0MjMxNDEwNX0.ah1r43wp3SJUKa2rMQCOAOFwtpRHyy_rVYUEMI_di50
+    
