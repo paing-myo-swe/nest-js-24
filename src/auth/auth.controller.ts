@@ -8,6 +8,7 @@ import {
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { LocalAuthGuard } from './guards/local-auth/local-auth.guard';
+import { RefreshJwtAuthGuard } from './guards/refresh-jwt-auth/refresh-jwt-auth.guard';
 
 @Controller('auth')
 export class AuthController {
@@ -16,9 +17,13 @@ export class AuthController {
   @HttpCode(HttpStatus.OK)
   @UseGuards(LocalAuthGuard)
   @Post('login')
-  async login(@Request() req) {
-    const token = this.authService.login(req.user.id);
+  login(@Request() req) {
+    return this.authService.login(req.user.id);
+  }
 
-    return { id: req.user.id, token };
+  @UseGuards(RefreshJwtAuthGuard)
+  @Post('refresh')
+  refreshToken(@Request() req) {
+    return this.authService.refreshToken(req.user.id);
   }
 }

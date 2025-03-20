@@ -6,3 +6,8 @@ Content-Type: application/json
     "email": "newuser1@gmail.com",
     "password": "password"
 }
+
+### Refresh Token
+POST http://localhost:3000/auth/refresh
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjExLCJpYXQiOjE3NDI0Mzc5MTEsImV4cCI6MTc0MzA0MjcxMX0.sDJiYUigf0daEUshbb-0u5WrqNB8XWJ3vlnE1k8g7Ww
