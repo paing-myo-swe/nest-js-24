@@ -10,4 +10,9 @@ Content-Type: application/json
 ### Refresh Token
 POST http://localhost:3000/auth/refresh
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjExLCJpYXQiOjE3NDI0Mzc5MTEsImV4cCI6MTc0MzA0MjcxMX0.sDJiYUigf0daEUshbb-0u5WrqNB8XWJ3vlnE1k8g7Ww
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjExLCJpYXQiOjE3NDI5NzE2MTIsImV4cCI6MTc0MzU3NjQxMn0.NrJ42ePWUdAixTeOnHmcyNOpHggA1j53s9tyRLQAqss
+
+### Logout
+POST http://localhost:3000/auth/logout
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjExLCJpYXQiOjE3NDI5NzI0OTQsImV4cCI6MTc0Mjk3NjA5NH0.CW9-tB3aXz0QMFb5KKYQ19kUzEvdWTQi6mVwrdB34Uw

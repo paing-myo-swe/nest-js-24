@@ -3,6 +3,7 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  IsNull,
   JoinTable,
   ManyToMany,
   OneToMany,
@@ -10,6 +11,7 @@ import {
 } from 'typeorm';
 import { Property } from './property.entity';
 import * as bcrypt from 'bcrypt';
+import { IsEmpty } from 'class-validator';
 
 @Entity()
 export class User {
@@ -30,6 +32,9 @@ export class User {
 
   @Column()
   password: string;
+
+  @Column({ type: 'varchar', nullable: true })
+  hashedRefreshToken: string | null;
 
   @CreateDateColumn()
   createdAt: Date;
