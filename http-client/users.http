@@ -15,4 +15,8 @@ Content-Type: application/json
 
 ### Get Profile
 GET http://localhost:3000/users/profile
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEyLCJpYXQiOjE3NDI5Njk5ODUsImV4cCI6MTc0Mjk3MzU4NX0.LOxVodDbZVznzyFTOu4dkyTEeN_S3wVQBy_odTGrFro
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjExLCJpYXQiOjE3NDMwNTk3OTQsImV4cCI6MTc0MzA2MzM5NH0.PJzNZ_-R3mqAzJhRDSs4eEVQCjWVp5PZpqG2gC67mrw
+
+### Remove User
+DELETE http://localhost:3000/users/11
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjExLCJpYXQiOjE3NDMwNTk3OTQsImV4cCI6MTc0MzA2MzM5NH0.PJzNZ_-R3mqAzJhRDSs4eEVQCjWVp5PZpqG2gC67mrw

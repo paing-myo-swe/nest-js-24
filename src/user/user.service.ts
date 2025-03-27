@@ -24,7 +24,14 @@ export class UserService {
   async findOne(id: number) {
     return await this.userRepository.findOne({
       where: { id },
-      select: ['firstName', 'lastName', 'avatarUrl', 'hashedRefreshToken'],
+      select: [
+        'id',
+        'firstName',
+        'lastName',
+        'avatarUrl',
+        'hashedRefreshToken',
+        'role',
+      ],
     });
   }
 
@@ -38,10 +45,6 @@ export class UserService {
     return `This action updates a #${id} user`;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} user`;
-  }
-
   async updateHashedRefreshToken(
     id: number,
     hashedRefreshToken: string | null,
@@ -49,5 +52,9 @@ export class UserService {
     return await this.userRepository.update(id, {
       hashedRefreshToken,
     });
+  }
+
+  remove(id: number) {
+    return `This action removes a #${id} user`;
   }
 }

@@ -12,6 +12,7 @@ import {
 import { Property } from './property.entity';
 import * as bcrypt from 'bcrypt';
 import { IsEmpty } from 'class-validator';
+import { Role } from 'src/auth/enums/role.enum';
 
 @Entity()
 export class User {
@@ -35,6 +36,9 @@ export class User {
 
   @Column({ type: 'varchar', nullable: true })
   hashedRefreshToken: string | null;
+
+  @Column({ type: 'enum', enum: Role, default: Role.USER })
+  role: Role;
 
   @CreateDateColumn()
   createdAt: Date;
